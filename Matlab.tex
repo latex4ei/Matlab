@@ -1,0 +1,285 @@
+% .:: Laden der LaTeX4EI Formelsammlungsvorlage
+\documentclass[fs]{latex4ei}
+
+
+\usepackage{listings}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+    backgroundcolor=\color{lbcolor},
+    basicstyle=\footnotesize\tt,
+    tabsize=4,
+    numbers=none,				% switch numbers on: left
+    numberstyle=\tiny\sf,
+    numbersep=1em,
+    language=Matlab,
+    %upquote=true,
+    %aboveskip={1\baselineskip},
+    %belowskip={0\baselineskip},
+    abovecaptionskip={\baselineskip},
+    belowcaptionskip={0\baselineskip},
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    linewidth={6.2cm},
+    xleftmargin={1em},
+    framexleftmargin={1pt},
+    framexrightmargin={10pt},
+    framextopmargin={1pt},
+    framexbottommargin={1pt},
+    breaklines=true,
+    prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    %tagstyle=\bf,
+    keywordstyle=\color[rgb]{0,0,1},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.8,  0.1,  0.1},
+}
+
+
+
+% .:: Kopf- und Fußzeile
+% ======================================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+   \fancyfoot[C]{von Hendrik Böttcher und Emanuel Regnath}
+   \renewcommand{\headrulewidth}{0.0pt} %obere Linie ausblenden
+   \renewcommand{\footrulewidth}{0.1pt} %obere Linie ausblenden
+
+   \fancyfoot[R]{Stand: \today \ um \thistime \ Uhr \qquad \thepage}
+   \fancyfoot[L]{Homepage: www.latex4ei.de -- Fehler bitte sofort an info@latex4ei.de}
+	
+
+% Dokumentbeginn
+% ======================================================================
+\begin{document}
+
+
+
+% Aufteilung in Spalten
+\vspace{-3mm}
+\begin{multicols}{4}
+	\fstitle{MATLAB}
+% -------------------------------------------
+% | 		MATLAB					|
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%=======================================================================
+
+\section{Wichtige Befehle}
+\sectionbox{
+\subsection{Standardbefehle}
+\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{}}
+\ctrule
+Befehl & Funktion\\ \cmrule
+save(\textit{filename, variable}) & speichert \textit{variable} in matfile\\
+load(\textit{filename}) & lädt Variable aus matfiel \\
+clear \textit{variable} & löscht \textit{variable}\\
+clear all & löscht alle Variablen im Workspace\\
+clc & löscht Inhalt des Kommandofensters\\
+doc \textit{expression} & Hilfedatei zu \textit{expression}\\
+help \textit{expression} & Kurzhilfe zu \textit{expression} \\
+\cbrule
+\end{tabular*}
+}
+
+\sectionbox{
+\subsection{Datentypkonvertierung (Karsten)}
+\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{}}
+\ctrule
+Befehl & Funktion \\\cmrule
+double(\textit{array}) & Umwandlung von \textit{array} in double\\
+\cbrule
+\end{tabular*}
+}
+
+\sectionbox{
+\subsection{Allgemeine Rechenoperationen}
+\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{}}
+\ctrule
+Befehl & Funktion \\\cmrule
+mod(x,y) & x modulo y (immer positiv)\\
+rem(x,y) & x modulo y (vorzeichenabhängig)\\
+sqrt(x) & $ \sqrt{x}$\\
+floor(x) & Abrunden auf Integer\\
+ceil(x) & Aufrunden auf Integer\\
+sum(x) & Summe über Werte des Vektors x\\
+prod(x) & Produkt über Werte des Vektors x\\
+min(x) & kleinster Wert des Vektors x\\
+max(x) & größter Wert des Vektors x\\
+all(x) & 1 für keine 0 in Vektor x\\
+any(x) & 1 für eine Nicht-0 in Vektor x\\
+\cbrule
+\end{tabular*}
+}
+
+\section{Trigonometrische Funktionen}
+\sectionbox{
+\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{}}
+\ctrule
+Befehl & Funktion \\\cmrule
+sin(x) , cos(x), tan(x) & x in Bogenmaß!\\
+sind(x), cosd(x), tand(x) & x in Grad!\\
+asin(x), acos(x), atan(x) & Arcusfunktionen (Rad)\\
+asind(x), acosd(x), antans(x) & Arcusfunktionen (Grad)\\
+\cbrule
+\end{tabular*}
+}
+
+
+\section{Komplexe Zahlen}
+\sectionbox{
+\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{}}
+\ctrule
+Befehl & Funktion \\\cmrule
+complex(a,b) & $a+jb$ \\
+real(z) & Realteil von z\\
+imag(z) & Imaginärteil von z\\
+abs(z) & Betrag/Komplexe Amplitude von z\\
+angle(z) & Phase von z\\
+conj(z) & konjugiert komplex von z\\
+\cbrule
+\end{tabular*}
+}
+
+\section{Matrizzenrechnung}
+\sectionbox{
+\subsection{Rechenoperationen}
+\begin{tabular}{l|l}
+Befehl & Funktion \\\mrule
+{[}a b c{]} & Zeilenvektor\\
+{[}a; b; c{]} & Spaltenvektor\\
+{[}a b c; d e f; g h i{]} & 3x3-Matrix\\
+inv($\ma A$) & inverse Matrix von $\ma A$\\
+$\ma A$' & $\ma A^\top$\\
+$\ma A\setminus \vec b $ & löst $\ma A \vec x= \vec b$\\
+$\ma A$(m,n) & Element $\ma A_{m,n}$\\
+$\ma A$(m,:) & m. Zeile\\
+$\ma A$(:,n) & n. Spalte\\
+find($\ma A$) & lokalisiert Nicht-Null-Elemente (Indizes)\\
+det($\ma A$) & Determinante von A \\
+a:b:c & Vektor von a bis c mit Schrittweite b\\
+linspace(a,b,n) & n Werte im gleichen Abstand von a bis b\\
+norm(x) & eukl. Norm des Vektors x\\
+$[\ma L \ma R \ma P ] = \text{lu}(\ma A)$ &(LR-) Zerlegung von A in Dreiecksmatrizen \\
+$[\ma Q \ma R] = \text{qr}(\ma A)$& QR-Zerlegung von A\\
+\end{tabular}
+
+Komponentenweises Rechnen durch einen Punkt vor einem Operator\\
+Bsp: $\ma A$.\^{}2 quadriert jedes Element der Matrix $\ma A$\\
+Inlinefunktion: @(x)(f(x))\\
+}
+
+\sectionbox{
+\subsection{Spezielle Matrizzen}
+\begin{tabular}{l|l}
+Befehl & Funktion \\\mrule
+eye(m,n) & mxn Einheitsmatrix\\
+zeros(m,n) & mxn 0-Matrix\\
+ones(m,n) & mxn 1-Matrix\\
+diag([a b]) & Diagonalmatrix mit [a b] auf Diagonale\\
+rand(m,n) & mxn Zufallsmatrix (Werte: 0-1)\\
+randi(imax,m,n) & integer Zufallsmatrix mit max. imax\\
+
+\end{tabular}
+}
+
+\sectionbox{
+\section{Schleiflab}
+\begin{tabular}{l|l}
+while: & for: \\ \trule
+	\emph{while} expression & \emph{for} i=0:1:20\\
+	statements & statements \\
+	\emph{end} & \emph{end}\\
+\end{tabular}\\
+Schleife vorzeitig verlassen mit break
+}
+
+
+%=======================================================================
+\section{Plot}
+%=======================================================================
+
+	\subsection{2D Plots}
+	\begin{lstlisting}
+figure(1);				% new figure
+clf;					% clear old figures
+plot(x, y, 'k');		% plot y(x) in black 'k'
+hold on;				% more plots in same figure
+plot(x, z, 'ro')		% plot z(x) in red circles
+legend('y', 'z')		% names of plots
+hold off;
+	\end{lstlisting}
+
+
+\sectionbox{
+	\subsection{3D Plots}
+	\begin{tabular}{l|l}
+	Befehl & Funktion \\\mrule
+	plot3($\vec x,\vec y,z$) & 3D-Plot mit Vektor x, y und z\\
+	$[\ma X,\ma Y]$ = meshgrid($\vec x,\vec y$) & Erzeugt lineare Matrizen\\
+	mesh($\vec x,\vec y,\ma Z$) & Skalarfeldplot\\
+	surf($\vec x,\vec y,\ma Z,\ma C$) & Oberflächenplott mit Farbmatrix C\\
+	\end{tabular}\\
+
+	Beispiel:\\
+	Laufparameter t: t=1:pi/10:10pi;\\
+	plot3: plot3(sin(t),cos(t),t)\\
+}
+
+
+%=======================================================================
+\section{Filter}
+%=======================================================================
+
+
+
+
+
+\sectionbox{
+\section{Bildbearbeitung}
+\begin{tabular}{l|l}
+Befehl & Funktion \\\mrule
+$\ma B$ = imread(\textit{url / filename}) & Bild einlesen\\
+imshow($\ma B$) & Bild $\ma A$ anzeigen\\
+\end{tabular}
+}
+
+\sectionbox{
+\subsection{Filterung von Bildern}
+\begin{tabular}{l|l}
+Befehl & Funktion \\\mrule
+conv2(Bild,$\ma F$,Parameter) & Faltung von Bildes mit $\ma F$\\
+\end{tabular}
+
+\begin{tabular}{l|l}
+Parameter aus conv2 & Funktion \\\mrule
+'same' & gleiche Größe wie Bild\\
+\end{tabular}
+}
+
+
+%=======================================================================
+\section{Include Matlab Plots in LaTeX}
+%=======================================================================
+
+
+
+
+
+
+
+
+
+
+% Ende der Spalten
+\end{multicols}
+
+% Dokumentende
+% ======================================================================
+\end{document}
